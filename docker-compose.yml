@@ -1,0 +1,33 @@
+version: '2'
+        
+services:
+    
+    #################### Database  ##########################
+    rnan_mariadb:
+        container_name: rnan_mariadb
+        image: bitnami/mariadb:10.2
+        ports:
+          - 3307:3306
+        environment:
+          - MARIADB_ROOT_PASSWORD=password
+          - MARIADB_USER=rnan_usr
+          - MARIADB_PASSWORD=kibnoi
+          - MARIADB_DATABASE=rnanlab_db
+        volumes:
+          - ./dockers/db:/bitnami
+
+    rnanlab:
+        tty: true
+        image: bitnami/laravel:5-debian-9
+        environment:
+            - DB_HOST=rnan_mariadb
+            - DB_USERNAME=rnan_usr
+            - DB_DATABASE=rnanlab_db
+            - DB_PASSWORD=kibnoi
+        depends_on:
+            - rnan_mariadb
+        ports:
+            - 3000:3000
+        volumes:
+            - ./www:/app
+    #########################################################
