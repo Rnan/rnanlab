@@ -1,7 +1,7 @@
 version: '2'
-        
+
 services:
-    
+
     #################### Database  ##########################
     rnan_mariadb:
         container_name: rnan_mariadb
@@ -15,7 +15,7 @@ services:
           - MARIADB_DATABASE=rnanlab_db
         volumes:
           - ./dockers/db:/bitnami
-
+    #################### Web  ##########################
     rnanlab:
         tty: true
         image: bitnami/laravel:5-debian-9
@@ -27,7 +27,13 @@ services:
         depends_on:
             - rnan_mariadb
         ports:
-            - 3000:3000
+            - 80:3000
         volumes:
             - ./www:/app
+    #################### Cach  ##########################
+    #redis:
+    #    container_name: rnan_redis
+    #    image: 'bitnami/redis:4.0'
+    #    environment:
+    #      - REDIS_PASSWORD=password123
     #########################################################

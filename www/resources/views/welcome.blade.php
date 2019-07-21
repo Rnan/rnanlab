@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Rnan Lab</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,19 +81,20 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Rnan Lab
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                  <div>Input</div>
+                  <div><textarea id="input" name="input" cols ="40" rows="5"></textarea></div>
+                  <div><button id="encode">Encode</button><button id="decode">Decode</button></div>
+                  <p/>
+                  <div>Output</div>
+                  <div><textarea id="output" name="output" cols ="40" rows="5"></textarea></div>
+                  <div><button onclick="Copy()">Copy text</button></div>
                 </div>
             </div>
         </div>
+          <script src="js/base64/base64.js"></script>
     </body>
 </html>
