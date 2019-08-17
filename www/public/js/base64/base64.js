@@ -143,8 +143,9 @@ encode.onclick = function() {
 }
 
 decode.onclick = function() {
-    var $str = output.innerHTML;
-    output.innerHTML = Base64.decode($str);
+    //var $str = output.innerHTML;
+    //output.innerHTML = Base64.decode($str);
+    output.innerHTML = Base64.decode(input.value);
 }
 
 function Copy() {
