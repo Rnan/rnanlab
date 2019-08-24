@@ -19,7 +19,7 @@ class HomeController extends Controller
       return view('encryptBase64',['str' => '']);
     }
 
-    public function encrypt(Request $request){
+    public function do_encrypt(Request $request){
       //Log::debug('## HomeController encrypt');
       $str = base64_encode($request->input('input'));
       return view('encryptBase64',['str' => $str]);
@@ -32,7 +32,7 @@ class HomeController extends Controller
       return view('decryptBase64',['str' => '']);
     }
 
-    public function decrypt(Request $request){
+    public function do_decrypt(Request $request){
       //Log::debug('## HomeController decrypt');
       $str = base64_decode($request->input('input'));
       return view('decryptBase64',['str' => $str]);

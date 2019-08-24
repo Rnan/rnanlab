@@ -6,7 +6,7 @@
 
 @section('func_content')
       <div>
-        <form action="/encrypt" method="post">
+        <form action="/do_encrypt" method="post">
           @csrf
           <h4 class="card-title text-center"> Input</h4>
           <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>

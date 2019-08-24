@@ -13,7 +13,10 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/encryptBase64', 'HomeController@encryptBase64');
-Route::post('/encrypt','HomeController@encrypt');
+Route::post('/do_encrypt','HomeController@encrypt');
 
 Route::get('/decryptBase64', 'HomeController@decryptBase64');
-Route::post('/decrypt', 'HomeController@decrypt');
+Route::post('/do_decrypt', 'HomeController@decrypt');
+
+Route::get('/qrcode', 'HomeController@qrcode');
+Route::post('/do_qrcode', 'HomeController@decrypt');
