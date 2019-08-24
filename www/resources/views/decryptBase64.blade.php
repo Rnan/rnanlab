@@ -1,16 +1,16 @@
 
 @extends('layouts.app')
 
-@section('app_title', 'Encrypt Base64')
+@section('app_title', 'Decrypt Base64')
 
 
 @section('func_content')
       <div>
-        <form action="/encrypt" method="post">
+        <form action="/decrypt" method="post">
           @csrf
           <h4 class="card-title"> Input</h4>
           <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>
-          <div><button id="encode" type="submit" class="btn btn-primary">Encode &rarr;</button></div>
+          <div><button id="encode" type="submit" class="btn btn-primary">Decode &rarr;</button></div>
           <p/>
           <h4 class="card-title"> Output</h4>
           <div> <textarea id="output" name="output" cols ="71" rows="5">{{$str}}</textarea></div>
