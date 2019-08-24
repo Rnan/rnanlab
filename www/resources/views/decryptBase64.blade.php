@@ -10,7 +10,7 @@
           @csrf
           <h4 class="card-title"> Input</h4>
           <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>
-          <div><button id="encode" type="submit" class="btn btn-primary">Decode &rarr;</button></div>
+          <div><button id="decode" type="submit" class="btn btn-primary">Decode &rarr;</button></div>
           <p/>
           <h4 class="card-title"> Output</h4>
           <div> <textarea id="output" name="output" cols ="71" rows="5">{{$str}}</textarea></div>

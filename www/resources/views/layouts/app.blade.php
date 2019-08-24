@@ -110,7 +110,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Utility JavaScript -->
-  <script src="js/base64/base64.js"></script>
+  <script src="js/utility.js"></script>
 </body>
 
 </html>
