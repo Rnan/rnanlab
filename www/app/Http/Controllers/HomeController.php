@@ -10,9 +10,13 @@ class HomeController extends Controller
       return view('index',['str' => '']);
     }
 
+    public function encryptBase64(){
+      return view('encryptBase64',['str' => '']);
+    }
+
     public function encrypt(Request $request){
 
       $str = base64_encode($request->input('input'));
-      return view('home',['str' => $str]);
+      return view('encryptBase64',['str' => $str]);
     }
 }

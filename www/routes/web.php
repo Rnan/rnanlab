@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/encryptBase64', 'HomeController@encryptBase64');
 Route::post('/encrypt','HomeController@encrypt');

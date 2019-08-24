@@ -23,7 +23,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/">Rnan Laps</a>
+      <a class="navbar-brand" href="#">Rnan Laps</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -63,48 +63,32 @@
 
         <!-- Blog Post -->
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div>
+            <form action="/encrypt" method="post">
+              @csrf
+              <h4 class="card-title"> Input</h4>
+              <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>
+              <div><button id="encode" type="submit" class="btn btn-primary">Encode &rarr;</button></div>
+              <p/>
+              <h4 class="card-title"> Output</h4>
+              <div> <textarea id="output" name="output" cols ="71" rows="5">{{$str}}</textarea></div>
+            </form>
+            <div><button class="btn btn-secondary" onclick="Copy();return;">Copy text</button></div>
+          </div>
           <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <h2 class="card-title">Base 64</h2>
+            <p class="card-text">
+              In computer science, Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The term Base64 originates from a specific MIME content transfer encoding. Each Base64 digit represents exactly 6 bits of data. Three 8-bit bytes (i.e., a total of 24 bits) can therefore be represented by four 6-bit Base64 digits.
+Common to all binary-to-text encoding schemes, Base64 is designed to carry data stored in binary formats across channels that only reliably support text content. Base64 is particularly prevalent on the World Wide Web[1] where its uses include the ability to embed image files or other binary assets inside textual assets such as HTML and CSS files
+            </p>
           </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
+
         </div>
-
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
 
       </div>
 
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
-
-        <!-- Search Widget -->
-        <!--
-        <div class="card my-4">
-          <h5 class="card-header">Search</h5>
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
-      -->
 
         <!-- Categories Widget -->
         <div class="card my-4">
@@ -114,10 +98,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="encryptBase64">Encrypt Base64</a>
+                    <a href="#">Encrypt Base64</a>
                   </li>
                   <li>
-                    <a href="decryptBase64">Decrypt Base64</a>
+                    <a href="#">Decrypt Base64</a>
                   </li>
                 </ul>
               </div>
@@ -162,7 +146,8 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <!-- Utility JavaScript -->
+  <script src="js/base64/base64.js"></script>
 </body>
 
 </html>
