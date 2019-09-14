@@ -15,7 +15,7 @@ class CreateEncodingMapTable extends Migration
     {
         Schema::create('encoding_map', function (Blueprint $table) {
             $table->increments('id')->index();
-            $table->string('encoding_code');
+            $table->string('encoding_id');
             $table->integer('seq');
         });
     }
