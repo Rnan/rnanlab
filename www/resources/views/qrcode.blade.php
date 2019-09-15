@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('app_title', 'QRCode generate')
+@section('app_title', 'QRCode generator')
 
 
 @section('func_content')

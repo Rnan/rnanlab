@@ -71,10 +71,10 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="qrcode">QRCode Generater</a>
+                    <a href="qrcode">QRCode Generator</a>
                   </li>
                   <li>
-                    <a href="barcode">Barcode Generater</a>
+                    <a href="barcode">Barcode Generator</a>
                   </li>
                 </ul>
               </div>
