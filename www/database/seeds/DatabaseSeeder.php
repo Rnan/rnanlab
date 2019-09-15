@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ModuleTableSeeder::class,
             EncodingTableSeeder::class,
-            EncodingMapTableSeeder::class,
+            ModuleEncodingTableSeeder::class,
         ]);
     }
 }

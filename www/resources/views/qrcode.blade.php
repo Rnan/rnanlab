@@ -10,20 +10,31 @@
           @csrf
           <h4 class="card-title text-center"> Input</h4>
           <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>
-          <div><button type="submit" class="btn btn-primary">Generate QRCode &rarr;</button></div>
+          <div>
+            <select name="opt_encoding">
+              @foreach($encodingItems as $item)
+                <option value="{{ $item->code }}">{{ $item->code }}</option>
+              @endforeach
+            </select>
+            <input id="opt_size" type="text" value="100" width="20" />
+            <button type="submit" class="btn btn-primary">Generate QRCode &rarr;</button>
+          </div>
           <p/>
           <h4 class="card-title text-center"> Output</h4>
           <div class="visible-print text-center">
-          	{!! QrCode::encoding('UTF-8')->size(100)->generate('ทดสอบ'); !!}
+          	<img src="temp/qrcodes/qrcode.png" width="200" />
           </div>
         </form>
-        <div><button class="btn btn-secondary" onclick="Copy();return;">Copy text</button></div>
+
       </div>
       <div class="card-body">
         <h2 class="card-title">QRCode</h2>
         <p class="card-text">
-          In computer science, Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The term Base64 originates from a specific MIME content transfer encoding. Each Base64 digit represents exactly 6 bits of data. Three 8-bit bytes (i.e., a total of 24 bits) can therefore be represented by four 6-bit Base64 digits.
-      Common to all binary-to-text encoding schemes, Base64 is designed to carry data stored in binary formats across channels that only reliably support text content. Base64 is particularly prevalent on the World Wide Web[1] where its uses include the ability to embed image files or other binary assets inside textual assets such as HTML and CSS files
+          QR code (abbreviated from Quick Response Code) is the trademark for a type of matrix barcode (or two-dimensional barcode) first designed in 1994 for the automotive industry in Japan. A barcode is a machine-readable optical label that contains information about the item to which it is attached. In practice, QR codes often contain data for a locator, identifier, or tracker that points to a website or application. A QR code uses four standardized encoding modes (numeric, alphanumeric, byte/binary, and kanji) to store data efficiently; extensions may also be used.[1]
+
+          The Quick Response system became popular outside the automotive industry due to its fast readability and greater storage capacity compared to standard UPC barcodes. Applications include product tracking, item identification, time tracking, document management, and general marketing.[2]
+
+          A QR code consists of black squares arranged in a square grid on a white background, which can be read by an imaging device such as a camera, and processed using Reed–Solomon error correction until the image can be appropriately interpreted. The required data is then extracted from patterns that are present in both horizontal and vertical components of the image.
         </p>
       </div>
 @endsection

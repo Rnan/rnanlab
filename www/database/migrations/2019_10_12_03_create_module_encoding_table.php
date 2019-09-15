@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEncodingMapTable extends Migration
+class CreateModuleEncodingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateEncodingMapTable extends Migration
      */
     public function up()
     {
-        Schema::create('encoding_map', function (Blueprint $table) {
+        Schema::create('module_encoding', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('encoding_id');
+            $table->integer('module_id');
             $table->integer('seq');
         });
     }
@@ -27,6 +28,6 @@ class CreateEncodingMapTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encoding_map');
+        Schema::dropIfExists('module_encoding');
     }
 }
