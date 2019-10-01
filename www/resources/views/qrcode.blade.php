@@ -16,13 +16,13 @@
                 <option value="{{ $item->code }}">{{ $item->code }}</option>
               @endforeach
             </select>
-            <input id="opt_size" type="text" value="100" width="20" />
+            <input name="opt_size" type="text" value="{{ $opt_size }}" width="20" />
             <button type="submit" class="btn btn-primary">Generate QRCode &rarr;</button>
           </div>
           <p/>
-          <h4 class="card-title text-center"> Output</h4>
+          <h4 class="card-title text-center"> Output </h4>
           <div class="visible-print text-center">
-          	<img src="temp/qrcodes/qrcode.png" width="200" />
+          	<img src="{{ $view_path }}" width="{{ $opt_size }}" />
           </div>
         </form>
 

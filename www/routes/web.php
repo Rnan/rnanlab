@@ -19,4 +19,4 @@ Route::get('/decryptBase64', 'HomeController@decryptBase64');
 Route::post('/do_decrypt', 'HomeController@decrypt');
 
 Route::get('/qrcode', 'HomeController@qrcode');
-Route::post('/do_qrcode', 'HomeController@decrypt');
+Route::post('/do_qrcode', 'HomeController@do_qrcode');

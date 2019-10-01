@@ -46,12 +46,7 @@ class HomeController extends Controller
 
 
     public function qrcode(){
-      $path='../public/temp/qrcodes';
-      if(!File::isDirectory($path)) {
-        //$session_id = Session::getId();
-        File::makeDirectory($path, 0777, true, true);
-      }
-      //QrCode::encoding('UTF-8')->format('png')->size(200)->generate('ทดสอบ','../public/temp/qrcodes/qrcode.png');
+
 
       /*
       $module=Module::find(3);
@@ -62,13 +57,27 @@ class HomeController extends Controller
       }*/
       $encodingItems=Encoding::All();
 
-      return view('qrcode',['str' => '','encodingItems' => $encodingItems]);
+      return view('qrcode',['str' => '','encodingItems' => $encodingItems, 'view_path' => '','opt_encoding' => 'UTF-8','opt_size' => 200]);
     }
 
-    public function do_qrcode(){
+    public function do_qrcode(Request $request){
+      $input = $request->input('input');
+      $opt_encoding = $request->input('opt_encoding');
+      $opt_size = $request->input('opt_size');
 
-      QrCode::encoding('UTF-8')->size(100)->format('png')->generate('ทดสอบ','../public/qrcodes/qrcode.png');
-      return view('qrcode',['str' => '']);
+      $temp_path="../public/temp";
+      $csrf_token = csrf_token();
+      $path = $temp_path."/qrcodes/".$csrf_token;
+      if(!File::isDirectory($path)) {
+        File::makeDirectory($path, 0777, true, true);
+      }
+      $file_full_path = $path.'/qrcode.png';
+      $view_path = "temp/qrcodes/".$csrf_token.'/qrcode.png';
+      QrCode::encoding($opt_encoding)->format('png')->size($opt_size)->generate($input,$file_full_path);
+
+      $encodingItems=Encoding::All();
+
+      return view('qrcode',['str' => '','encodingItems' => $encodingItems, 'view_path' => $view_path,'opt_encoding' => $opt_encoding,'opt_size' => $opt_size]);
     }
 
     public function barcode(){
