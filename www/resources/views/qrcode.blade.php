@@ -22,7 +22,7 @@
           <p/>
           <h4 class="card-title text-center"> Output </h4>
           <div class="visible-print text-center">
-          	<img src="{{ $view_path }}" width="{{ $opt_size }}" />
+          	<a href="{{ $view_path }}" download="qrcode.png" ><img src="{{ $view_path }}" width="{{ $opt_size }}" /></a>
           </div>
         </form>
 
