@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/temp/qrcodes
+/public/temp/barcodes
 /storage/*.key
 /vendor
 .phpunit.result.cache

@@ -20,3 +20,6 @@ Route::post('/do_decrypt', 'HomeController@do_decrypt');
 
 Route::get('/qrcode', 'HomeController@qrcode');
 Route::post('/do_qrcode', 'HomeController@do_qrcode');
+
+Route::get('/barcode', 'HomeController@barcode');
+Route::post('/do_barcode', 'HomeController@do_barcode');

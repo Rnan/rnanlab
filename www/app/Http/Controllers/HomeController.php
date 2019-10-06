@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\File;
+use Milon\Barcode\DNS1D;
 
 use App\Models\Encoding;
 use App\Models\Module;
@@ -89,6 +90,30 @@ class HomeController extends Controller
     }
 
     public function barcode(){
-      return view('barcode',['str' => '']);
+
+
+
+
+      return view('barcode',['str' => '', 'view_path' => '','opt_size' => 100]);
+    }
+
+    public function do_barcode(Request $request){
+      $input = $request->input('input');
+      $opt_type = $request->input('opt_type');
+      $opt_size = $request->input('opt_size');
+
+      $temp_path="../public/temp";
+      $csrf_token = csrf_token();
+      $path = $temp_path."/barcodes/".$csrf_token."/";
+      if(!File::isDirectory($path)) {
+        File::makeDirectory($path, 0777, true, true);
+      }
+
+      $d = new DNS1D();
+      $d->setStorPath($path);
+      $d->getBarcodePNGPath($input, $opt_type,3,$opt_size);
+      $view_path = "temp/barcodes/".$csrf_token.'/'.$input.'.png';
+
+      return view('barcode',['str' => '', 'view_path' => $view_path,'opt_size' => $opt_size]);
     }
 }
