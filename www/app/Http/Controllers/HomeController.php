@@ -101,6 +101,11 @@ class HomeController extends Controller
       $input = $request->input('input');
       $opt_type = $request->input('opt_type');
       $opt_size = $request->input('opt_size');
+      $opt_showtext = $request->input('opt_showtext');
+      $is_show_text = false;
+      if($opt_showtext=='on'){
+        $is_show_text = true;
+      }
 
       $temp_path="../public/temp";
       $csrf_token = csrf_token();
@@ -111,7 +116,7 @@ class HomeController extends Controller
 
       $d = new DNS1D();
       $d->setStorPath($path);
-      $d->getBarcodePNGPath($input, $opt_type,3,$opt_size);
+      $d->getBarcodePNGPath($input, $opt_type,3,$opt_size,array(0,0,0), $is_show_text);
       $view_path = "temp/barcodes/".$csrf_token.'/'.$input.'.png';
 
       return view('barcode',['str' => '', 'view_path' => $view_path,'opt_size' => $opt_size]);

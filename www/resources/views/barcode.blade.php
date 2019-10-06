@@ -11,7 +11,8 @@
           <h4 class="card-title text-center"> Input</h4>
           <div> <textarea id="input" name="input" cols ="71" rows="5"></textarea></div>
           <div>
-            <select name="opt_type">
+            Show text : <input type="checkbox" name="opt_showtext" checked/>
+            Type : <select name="opt_type">
               <option>C39</option>
               <option>C39+</option>
               <option>C39E</option>
