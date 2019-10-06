@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 
 use App\Models\Encoding;
 use App\Models\Module;
+use App\Models\RequestHistory;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,8 @@ class HomeController extends Controller
     public function do_encrypt(Request $request){
       //Log::debug('## HomeController encrypt');
       $str = base64_encode($request->input('input'));
+      $csrf_token = csrf_token();
+      $his_obj = RequestHistory::create(["module_id"=>1,"csrf_token"=>$csrf_token,"client_ip"=>$request->ip()]);
       return view('encryptBase64',['str' => $str]);
     }
 
@@ -40,6 +43,8 @@ class HomeController extends Controller
     public function do_decrypt(Request $request){
       //Log::debug('## HomeController decrypt');
       $str = base64_decode($request->input('input'));
+      $csrf_token = csrf_token();
+      $his_obj = RequestHistory::create(["module_id"=>2,"csrf_token"=>$csrf_token,"client_ip"=>$request->ip()]);
       return view('decryptBase64',['str' => $str]);
     }
 
@@ -74,6 +79,9 @@ class HomeController extends Controller
       $file_full_path = $path.'/qrcode.png';
       $view_path = "temp/qrcodes/".$csrf_token.'/qrcode.png';
       QrCode::encoding($opt_encoding)->format('png')->size($opt_size)->generate($input,$file_full_path);
+
+      //create request history
+      $his_obj = RequestHistory::create(["module_id"=>3,"csrf_token"=>$csrf_token,"client_ip"=>$request->ip()]);
 
       $encodingItems=Encoding::All();
 
