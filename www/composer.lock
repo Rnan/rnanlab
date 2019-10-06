@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d9647ea09f5eda81bf424789b0069c8",
+    "content-hash": "dc38130c51bfaf39b42938b1284c6764",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -809,23 +809,34 @@
         },
         {
             "name": "milon/barcode",
-            "version": "5.3.6",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/milon/barcode.git",
-                "reference": "ca2f3efbf46142ff7f7afe3b0f3660ea4a067576"
+                "reference": "71454ba6d4ec3c70103379afb0376f51d0bf17ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/milon/barcode/zipball/ca2f3efbf46142ff7f7afe3b0f3660ea4a067576",
-                "reference": "ca2f3efbf46142ff7f7afe3b0f3660ea4a067576",
+                "url": "https://api.github.com/repos/milon/barcode/zipball/71454ba6d4ec3c70103379afb0376f51d0bf17ce",
+                "reference": "71454ba6d4ec3c70103379afb0376f51d0bf17ce",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.*",
+                "illuminate/support": "5.*|~6",
                 "php": ">=5.6.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Milon\\Barcode\\BarcodeServiceProvider"
+                    ],
+                    "aliases": {
+                        "DNS1D": "Milon\\Barcode\\Facades\\DNS1DFacade",
+                        "DNS2D": "Milon\\Barcode\\Facades\\DNS2DFacade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Milon\\Barcode": "src/"
@@ -854,7 +865,7 @@
                 "qr code",
                 "qrcode"
             ],
-            "time": "2017-07-28T00:33:38+00:00"
+            "time": "2019-09-17T07:40:26+00:00"
         },
         {
             "name": "monolog/monolog",
