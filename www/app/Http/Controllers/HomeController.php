@@ -119,6 +119,9 @@ class HomeController extends Controller
       $d->getBarcodePNGPath($input, $opt_type,3,$opt_size,array(0,0,0), $is_show_text);
       $view_path = "temp/barcodes/".$csrf_token.'/'.$input.'.png';
 
+      $csrf_token = csrf_token();
+      $his_obj = RequestHistory::create(["module_id"=>4,"csrf_token"=>$csrf_token,"client_ip"=>$request->ip()]);
+
       return view('barcode',['str' => '', 'view_path' => $view_path,'opt_size' => $opt_size]);
     }
 }
