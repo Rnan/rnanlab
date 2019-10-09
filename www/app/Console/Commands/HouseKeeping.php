@@ -37,7 +37,7 @@ class HouseKeeping extends Command
      */
     public function handle()
     {
-      $result = shell_exec("find /Users/rnan/dev/rnanlab.com/source/rnanlab/www/public/temp* -mtime 1 -delete");
+      $result = shell_exec("find ". env("APP_PATH") ."/rnanlab/www/public/temp* -mtime 1 -delete");
       print_r($result);
     }
 }
