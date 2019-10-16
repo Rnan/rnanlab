@@ -15,25 +15,28 @@ services:
           - MARIADB_DATABASE=rnanlab_db
         volumes:
           - ./dockers/db:/bitnami
-    #################### Web  ##########################
+
+   #################### php-fpm-laravel  ##########################
     rnanlab:
-        tty: true
-        image: bitnami/laravel:5-debian-9
-        environment:
-            - DB_HOST=rnan_mariadb
-            - DB_USERNAME=rnan_usr
-            - DB_DATABASE=rnanlab_db
-            - DB_PASSWORD=kibnoi
+        container_name: rnanlab
+        image: bitnami/php-fpm:7.3.10
         depends_on:
             - rnan_mariadb
-        ports:
-            - 80:3000
         volumes:
+          - ./dockers/web/phpfpm:/bitnami/php-fpm
+          - ./www:/app
+
+    #################### nginx  ##########################
+    nginx:
+        container_name: nginx
+        image: bitnami/nginx:1.16
+        ports:
+          - 80:8080
+          - 443:8443
+        depends_on:
+            - rnanlab
+        volumes:
+            - ./dockers/web/nginx:/bitnami/nginx
+            - ./dockers/certs:/opt/bitnami/certs
+            - ./dockers/web/nginx/nginx-vhost/rnanlab.conf:/opt/bitnami/nginx/conf/server_blocks/rnanlab.conf
             - ./www:/app
-    #################### Cach  ##########################
-    #redis:
-    #    container_name: rnan_redis
-    #    image: 'bitnami/redis:4.0'
-    #    environment:
-    #      - REDIS_PASSWORD=password123
-    #########################################################
