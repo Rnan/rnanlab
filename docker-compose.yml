@@ -23,7 +23,8 @@ services:
         depends_on:
             - rnan_mariadb
         volumes:
-          - ./dockers/web/phpfpm:/bitnami/php-fpm
+          - ./dockers/web/phpfpm/php-fpm.conf:/opt/bitnami/php/etc/php-fpm.conf
+          - ./dockers/web/phpfpm/www.conf:/opt/bitnami/php/etc/php-fpm.d/www.conf
           - ./www:/app
 
     #################### nginx  ##########################
